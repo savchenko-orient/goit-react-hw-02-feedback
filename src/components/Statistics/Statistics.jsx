@@ -1,25 +1,25 @@
 import PropTypes from 'prop-types'
-import { Title, Section, List, ListItem, Span } from './Statistics.styled'
+import { StatisticsList, StatisticsItem } from './Statistics.styled'
 
-const Statistics = ({ title, data }) => {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
     return (
-        <Section >
-            {title && <Title >{title}</Title>}
-            <List >
-                {data.map((item) => {
-                    return <ListItem key={item.id}>
-                        <Span>{item.label}</Span>
-                        <Span>{item.percentage}</Span>
-                    </ListItem>
-                })}
-            </List>
-        </Section>
+        <StatisticsList>
+            <StatisticsItem>Good:{good}</StatisticsItem>
+            <StatisticsItem>Neutral:{neutral}</StatisticsItem>
+            <StatisticsItem>Bad:{bad}</StatisticsItem>
+            <StatisticsItem>Total:{total}</StatisticsItem>
+            <StatisticsItem>Positive feedback: {total > 0
+                ? positivePercentage()
+                : 0}%</StatisticsItem>
+        </StatisticsList>
     )
 }
 
 Statistics.propTypes = {
-    title: PropTypes.string,
-    data: PropTypes.arrayOf(PropTypes.object).isRequired
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    total: PropTypes.number,
+    positivePercentage: PropTypes.func
 }
-
-export default Statistics
+export default Statistics;
