@@ -1,4 +1,5 @@
 import Title from 'components/Title/Title'
+import PropTypes from 'prop-types';
 import { Container } from './Section.styled'
 
 function Section({ title, children }) {
@@ -10,4 +11,7 @@ function Section({ title, children }) {
     )
 }
 
+Section.propTypes = {
+    title: PropTypes.string,
+}
 export default Section

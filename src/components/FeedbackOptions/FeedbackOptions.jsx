@@ -16,6 +16,7 @@ const FeedbackOptions = ({ options, leaveFeedback }) => {
 }
 
 FeedbackOptions.prototype = {
-    item: PropTypes.object
+    options: PropTypes.object,
+    leaveFeedback: PropTypes.func
 }
 export default FeedbackOptions;
